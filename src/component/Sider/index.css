@@ -1,0 +1,45 @@
+.my-sider-box {
+  height: 100vh;
+  width: auto;
+  padding: 10px;
+  /* background-color: pink; */
+}
+
+.my-sider {
+  height: 100%;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 2px 4px 6px 1px gray;
+  position: relative;
+}
+
+.menu-top-item {
+  color: #fff;
+  padding: 0px 20px;
+  cursor: pointer;
+  border-radius: 14px;
+  min-height: 40px;
+  margin-bottom: 20px;
+}
+
+.menu-top-icon {
+  font-size: 30px;
+}
+
+.bottom-setting-box {
+  color: #fff;
+  cursor: pointer;
+  /* padding: 0px 20px; */
+  height: 40px;
+  font-size: 20px;
+  border-radius: 12px;
+  margin-top: 65vh;
+}
+
+.bottom-setting-box:hover {
+  background-color: #1677ff;
+}
+
+.is-blue {
+  background-color: #1677ff;
+}
