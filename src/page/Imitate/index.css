@@ -1,0 +1,19 @@
+.imitate {
+  margin-top: 20px;
+  padding: 0px 20px;
+}
+
+.generate-btn {
+  width: 100%;
+}
+
+.imitate-main {
+  min-height: 380px;
+  margin: 10px 0px;
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.output-text-area {
+  margin-top: 10px;
+}

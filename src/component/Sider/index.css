@@ -1,5 +1,5 @@
 .my-sider-box {
-  height: 100vh;
+  height: 99vh;
   width: auto;
   padding: 10px;
   /* background-color: pink; */
@@ -42,4 +42,9 @@
 
 .is-blue {
   background-color: #1677ff;
+}
+
+.input-box {
+  padding: 10px;
+  margin: 10px 0px;
 }

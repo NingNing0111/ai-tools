@@ -1,15 +1,12 @@
-import { Layout, Button } from "antd";
-import { useState } from "react";
+import { Layout } from "antd";
 import MySider from "../../component/Sider";
 import { Outlet } from "react-router-dom";
-import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
 import { menuRouterList } from "../../router/config";
 const BaseLayout = () => {
-  const [collapsed, setCollapsed] = useState(false);
-  const { Content, Header } = Layout;
+  const { Content } = Layout;
   return (
     <Layout>
-      <MySider collapsed={collapsed} menuItems={menuRouterList} />
+      <MySider collapsed={false} menuItems={menuRouterList} />
       <Layout>
         <Content>
           <Outlet />
