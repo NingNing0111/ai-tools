@@ -1,70 +1,141 @@
-# Getting Started with Create React App
+# AI 工具集
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 一、代码模仿生成
 
-## Available Scripts
+&emsp;需求场景：
 
-In the project directory, you can run:
+&emsp;我想将下述代码：
 
-### `npm start`
+```ts
+hourlyFlow.value.sq_over_1hour_top3_list = data.sq_over_1hour_top3_list;
+hourlyFlow.value.sq_top1_hour_people_list = data.sq_top1_hour_people_list;
+hourlyFlow.value.sq_top2_hour_people_list = data.sq_top2_hour_people_list;
+hourlyFlow.value.sq_top3_hour_people_list = data.sq_top3_hour_people_list;
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+&emsp;修改为：
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```ts
+hourlyFlow.value.sq_over_1hour_top3_list = parseStringToList(
+  data.sq_over_1hour_top3_list,
+  "string"
+);
+hourlyFlow.value.sq_top1_hour_people_list = parseStringToList(
+  data.sq_top1_hour_people_list,
+  "string"
+);
+hourlyFlow.value.sq_top2_hour_people_list = parseStringToList(
+  data.sq_top2_hour_people_list,
+  "string"
+);
+hourlyFlow.value.sq_top3_hour_people_list = parseStringToList(
+  data.sq_top3_hour_people_list,
+  "string"
+);
+```
 
-### `npm test`
+&emsp;如果是人工写，那么就需要给每一个对象的属性手动调一次`parseStringToList`方法,即使你可以 CV，但是，如果遇到下面这种情况，可能你就真的懒得想 CV 了。
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```ts
+trafficHubStayDuration.value.jtsn_jc_dur_people_num_list = parseStringToList(
+  data.jtsn_jc_dur_people_num_list ?? [],
+  "string"
+);
+trafficHubStayDuration.value.jtsn_qg_dur_people_num_list = parseStringToList(
+  data.jtsn_qg_dur_people_num_list ?? [],
+  "string"
+);
+trafficHubStayDuration.value.jtsn_hc_dur_people_num_list = parseStringToList(
+  data.jtsn_hc_dur_people_num_list ?? [],
+  "string"
+);
+trafficHubStayDuration.value.jtsn_dt_dur_people_num_list = parseStringToList(
+  data.jtsn_dt_dur_people_num_list ?? [],
+  "string"
+);
+trafficHubStayDuration.value.jtsn_qc_dur_people_num_list = parseStringToList(
+  data.jtsn_qc_dur_people_num_list ?? [],
+  "string"
+);
+trafficHubStayDuration.value.jtsn_gssf_dur_people_num_list = parseStringToList(
+  data.jtsn_gssf_dur_people_num_list ?? [],
+  "string"
+);
+trafficHubStayDuration.value.jtsn_gt_dur_people_num_list = parseStringToList(
+  data.jtsn_gt_dur_people_num_list ?? [],
+  "string"
+);
+trafficHubStayDuration.value.jtsn_gs_dur_people_num_list = parseStringToList(
+  data.jtsn_gs_dur_people_num_list ?? [],
+  "string"
+);
+```
 
-### `npm run build`
+&emsp;这个时候，你就需要用到代码模仿生成工具。只需提供代码示例说明，例如：
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+&emsp;旧代码：
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```ts
+dwellTime.value.sq_over_1hour_top3_ave_list = data.sq_over_1hour_top3_ave_list;
+dwellTime.value.sq_top3_ave_dur_list = data.sq_top3_ave_dur_list;
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+&emsp;目标代码：
 
-### `npm run eject`
+```ts
+dwellTime.value.sq_over_1hour_top3_ave_list = parseStringToList(
+  data.sq_over_1hour_top3_ave_list,
+  "string"
+);
+dwellTime.value.sq_top3_ave_dur_list = parseStringToList(
+  data.sq_top3_ave_dur_list,
+  "number"
+);
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+&emsp;说明描述：
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```txt
+对于数字列表，使用parseStringToList时指定number进行解析，
+对于字符串列表,使用parseStringToList时指定string进行解析,
+其它情况使用JSON.parse(data.属性)进行解析
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+&emsp;然后给出你的代码：
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```ts
+hourlyFlow.value.sq_over_1hour_top3_list = data.sq_over_1hour_top3_list;
+hourlyFlow.value.sq_top1_hour_people_list = data.sq_top1_hour_people_list;
+hourlyFlow.value.sq_top2_hour_people_list = data.sq_top2_hour_people_list;
+hourlyFlow.value.sq_top3_hour_people_list = data.sq_top3_hour_people_list;
+```
 
-## Learn More
+&emsp;再给出关于你的代码的描述信息
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```txt
+hourlyFlow的属性都是string列表
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+&emsp;点击生成，即可获取目标代码：
 
-### Code Splitting
+```ts
+hourlyFlow.value.sq_over_1hour_top3_list = parseStringToList(
+  data.sq_over_1hour_top3_list,
+  "string"
+);
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+hourlyFlow.value.sq_top1_hour_people_list = parseStringToList(
+  data.sq_top1_hour_people_list,
+  "string"
+);
 
-### Analyzing the Bundle Size
+hourlyFlow.value.sq_top2_hour_people_list = parseStringToList(
+  data.sq_top2_hour_people_list,
+  "string"
+);
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+hourlyFlow.value.sq_top3_hour_people_list = parseStringToList(
+  data.sq_top3_hour_people_list,
+  "string"
+);
+```
