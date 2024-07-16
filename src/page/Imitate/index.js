@@ -11,7 +11,7 @@ import {
   getImitateSystemPrompt,
   getImitateUserPrompt,
 } from "../../template/imitate.js";
-
+import copy from "copy-to-clipboard";
 const Imitate = () => {
   const [messageApi, contextHolder] = message.useMessage();
 
@@ -50,7 +50,6 @@ const Imitate = () => {
       setDataSource((prevDataSource) => {
         return prevDataSource.filter((item) => item.key !== record.key);
       });
-
       messageApi.open({
         type: "success",
         content: "删除成功",
@@ -118,6 +117,21 @@ const Imitate = () => {
     );
   };
 
+  const handleClick = () => {
+    if (aiText === "") {
+      copy(aiText);
+      messageApi.open({
+        type: "success",
+        content: "复制成功",
+      });
+    } else {
+      messageApi.open({
+        type: "error",
+        content: "无复制内容",
+      });
+    }
+  };
+
   return (
     <div className="imitate">
       {contextHolder}
@@ -148,20 +162,26 @@ const Imitate = () => {
         </Col>
 
         <Col span={3}>
-          <Button type="primary" icon={<CopyFilled />}>
+          <Button type="primary" icon={<CopyFilled />} onClick={handleClick}>
             一键复制
           </Button>
         </Col>
       </Row>
       <Row className="imitate-main">
-        <Table dataSource={dataSource}>
+        <Table dataSource={dataSource} bordered>
           <Column
             title="序号"
             dataIndex="key"
             key="index"
+            width={80}
             render={(text, record, index) => index + 1}
           />
-          <Column title="语言" dataIndex="language" key="language" />
+          <Column
+            width={120}
+            title="语言"
+            dataIndex="language"
+            key="language"
+          />
           <Column
             ellipsis
             title="旧代码"

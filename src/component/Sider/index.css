@@ -10,7 +10,7 @@
   padding: 20px;
   border-radius: 12px;
   box-shadow: 2px 4px 6px 1px gray;
-  position: relative;
+  position: absolute;
 }
 
 .menu-top-item {
@@ -34,6 +34,8 @@
   font-size: 20px;
   border-radius: 12px;
   margin-top: 65vh;
+  position: relative;
+  bottom: 50px;
 }
 
 .bottom-setting-box:hover {

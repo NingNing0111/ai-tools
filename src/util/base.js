@@ -10,6 +10,8 @@ const showConfirm = (title, content, handleOk, handleCancel) => {
     onOk: () => handleOk(),
 
     onCancel: () => handleCancel(),
+    okText: "确定",
+    cancelText: "取消",
   });
 };
 

@@ -18,7 +18,7 @@ const routerList = [
         element: <Imitate />,
         meta: {
           menuType: "top",
-          name: "AI模仿",
+          name: "模仿生成器",
           path: "/",
           icon: <DeploymentUnitOutlined />,
         },
