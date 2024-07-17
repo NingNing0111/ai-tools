@@ -1,7 +1,34 @@
+import { Col, Form, Row, Input } from "antd";
+import "./index.css";
 const Setting = () => {
   return (
     <div>
-      <h1>设置中心</h1>
+      <Row justify={"center"} align={"middle"}>
+        <Col span={16} className="setting-box">
+          <Form
+            labelCol={{
+              span: 8,
+            }}
+          >
+            <Form.Item label="Base URL" name="url">
+              <Input placeholder="https://api.openai.com" />
+            </Form.Item>
+            <Form.Item
+              label="API Key"
+              name="key"
+              rules={[
+                {
+                  required: true,
+                  message: "请输入Key",
+                },
+              ]}
+            >
+              <Input placeholder="请输入API Key" />
+            </Form.Item>
+            <Form.Item label="模型" name="model"></Form.Item>
+          </Form>
+        </Col>
+      </Row>
     </div>
   );
 };
