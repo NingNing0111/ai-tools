@@ -1,4 +1,4 @@
-import { Col, Form, Row, Input } from "antd";
+import { Col, Form, Row, Input, Button } from "antd";
 import "./index.css";
 const Setting = () => {
   return (
@@ -28,6 +28,9 @@ const Setting = () => {
             <Form.Item label="模型" name="model"></Form.Item>
           </Form>
         </Col>
+        <Row>
+          <Button>提交</Button>
+        </Row>
       </Row>
     </div>
   );
